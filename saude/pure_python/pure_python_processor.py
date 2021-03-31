@@ -30,8 +30,8 @@ logging.basicConfig(
 today = datetime.today()
 def age_from_birthdate(birthdate):
     """
-    Calculador simples de idade a partir do aniversario. Utiliza variavel global today.
-    Nao considera casos especiais como 29 de Fevereiro e etc.
+    Calculates age from birthdate. Uses 'today' global variable.
+    Does not consider special cases such as Feb 29th births and such.
     """
     global today
 
