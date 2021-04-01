@@ -24,6 +24,7 @@ Para esse tipo de processamento, seria também interessante ter uma ferramenta d
 - O Result.csv exemplo nesta pasta foi gerado apenas da base de usuarios ativos como exemplo. Assume-se que, por termos os arquivos na máquina, juntaremos a base de ativos e inativos na mesma pasta para a execução do script.
 - No teste em uma máquina com i7, 16gb RAM, o processamento com os params preenchidos conforme no script estava como uma performance de aproximadamente 6.5MBs processados por segundo.
 - Dados com valores faltando estão sendo descartados, mas essa abordagem é variável pra cada cenário.
+- Melhorias poderiam ser feitas com a mesma abordagem usada na versão pyspark, gerando colunas binárias para as faixas, e usando funções de agregação do pandas para calcular a idade, ao invés de usar o .apply, que é pouco performático.
 
 ## Ambiente de Execução Validado
 O Script foi executado em ambiente com:  
