@@ -80,8 +80,9 @@ conf = {
     "chunk_size": 20000,
     "files_encoding": "latin",
     # Assume-se que tanto os dados dos ativos quanto dos inativos foram adicionados na mesma pasta
-    "files_location": "C:/Users/daviv/Downloads/sib_ativos",
-    "files_csv_separator": ";"
+    "files_location": "somewhere/sib_all",
+    "files_csv_separator": ";",
+    "columns_to_load": ["DT_NASCIMENTO", "TP_SEXO", "SG_UF"]
 }
 
 for conf_name in conf:
@@ -97,7 +98,8 @@ for file in listdir(conf["files_location"]):
     for data_fragment in pd.read_csv("%s/%s" % (conf["files_location"], file), 
                                      chunksize=conf["chunk_size"], 
                                      sep=conf["files_csv_separator"], 
-                                     encoding=conf["files_encoding"]):
+                                     encoding=conf["files_encoding"],
+                                     usecols=conf["columns_to_load"]):
         
         # Remove entradas sem data e/ou sexo
         processed_fragment = data_fragment.dropna(subset=["DT_NASCIMENTO", "TP_SEXO"])
