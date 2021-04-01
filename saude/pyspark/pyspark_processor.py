@@ -69,7 +69,7 @@ dataset = spark.read.options(
         encoding=ENCODING, #latin
         dateFormat=DATE_FORMAT,
         inferSchema="True"
-    ).csv("csv_exemplo.csv") # 1 ou mais arquivos.. ideal ler todos, depende de particionamento e etc do hive tb
+    ).csv("csv_exemplo.csv") # 1 ou mais arquivos.. Ideal seria ler todos, depende de particionamento e etc do Hive
 
 # Remove colunas desnecessarias
 unnecessary_columns = [column for column in dataset.schema.names if column not in RELEVANT_COLUMNS]
