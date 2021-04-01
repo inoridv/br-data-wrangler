@@ -1,5 +1,3 @@
-82mb/s, mesmo um standalone modesto de spark ja seria outro nivel
-
 # Abordagem com PySpark
 Nesta pasta o processamento foi feito utilizando o framework Apache Spark para processamento dos dados com ferramentas mais otimizadas de processamento paralelo, particionamento e agregação de dados. __O código tem algumas limitações por ter sido executado com o PySpark local sem nem uma instalação standalone de hadoop local, como por exemplo não ser capaz de ler múltiplos arquivos de uma vez nem realizar a escrita utilizando as ferramentas do Spark. Com uma instalação de Hadoop, seja local ou em cluster, torna-se possível de usar essas ferramentas normalmente. Pensando nisso, houveram algumas adaptações.__ De qualquer forma, podemos ainda aproveitar de algum paralelismo especialmente durante o processamento, mesmo localmente. 
 
@@ -28,7 +26,7 @@ Para esse tipo de processamento, assume-se um cenário com uma ferramenta de orq
 - Há limitações devido à interações que precisam de ferramentas hadoop instaladas, conforme descrito previamente.
 - No teste em uma máquina com i7, 16gb RAM, o processamento com os params preenchidos conforme no script estava como uma performance de aproximadamente __80MBs__ processados por segundo.
 - Dados com valores faltando estão sendo descartados, mas essa abordagem é variável pra cada cenário.
-- Dados não utilizados são sempre _dropados_ ASAP dos dataframes para otimizar o processamento.
+- Dados não utilizados são sempre _removidos_ o quanto antes dos dataframes para otimizar o processamento.
 - Mais otimizações poderiam ser feitas em um ambiente Hadoop, como alteração do parâmetro _shuffle partitions_ do spark para otimizar o paritcionamento dos dados, além de outros parâmetros de uso de memória.
 - Otimizações de código também sempre devem ser consideradas, como uso de _cache()_ em DFs recorrentemente utilizados, e talvez até mesmo _casting_ do campo TP_SEXO para char/booleano, visando ocupar menos espaço na memória.
 
